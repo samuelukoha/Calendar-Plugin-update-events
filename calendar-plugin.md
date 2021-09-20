@@ -35,61 +35,44 @@ These ways to set up the end point to function properly:
 - Import all needed modules
 - It is important you set your database in set up ur database with models.py
 - Copy the URL for the fetch list of events request
--   ‘GET'\https://calender.zuri.chat/api/v1/event-list
+-   ‘PATCH'\https://calender.zuri.chat/api/v1/update-event/{id}
 - Paste it where it is needed in the code which is  the url.py
 That is a summary of how the end point is being set up.
 
 ## Endpoint
 <details>
-  <summary> PATCH/event-list </summary>
+  <summary> PATCH/update-list </summary>
 Zuri Calender Plugin
 
-https://calender.zuri.chat/api/v1/update-event
+https://calender.zuri.chat/api/v1/update-event{id}
  </details>
 
 ## RESPONSES;
-### **200** Events updated Successfully <br>
+### **-200** Events updated Successfully <br>
 ```sh
-{
-  "status": 200,
-  "message": "string",
-  "data": [
-      {...}
-  ]
-}
-```
-### **404** The event is not found on the database <br>
 
-**Content type** <br>
-application/json
 
-```sh
-{
-  "status": 404,
-  "message": "string",
-  "data": null
-}
-```
 ### Response Sample
 **Content type** <br>
 application/json
 
-````
+
 {
-"code": 200,
-"message": "string",
-"data": [
-  {...}
-]
+  "_id": "string",
+  "title": "string",
+  "date": "2019-08-24",
+  "time": "string",
+  "repeat": "D0_NOT",
+  "all_day": true,
 }
-````
+```
 
 
 
 
-# UPDATE LIST OF REMINDERS
 
-# EVENT DETAILS
+# UPDATE REMINDERS
+
 ## Description: 
 This endpoint fetches the details of an event. The event id must be present in the request
 
@@ -107,7 +90,7 @@ These ways to set up the end point to function properly:
 - Import all needed modules
 - It is important you set your database in set up ur database with models.py
 - Copy the URL for the fetch event request
--   ‘GET'\https://calender.zuri.chat/api/v1/event-detail/{id}
+-   ‘PATCH'\https://calender.zuri.chat/api/v1/event-detail/{id}
 - Paste it where it is needed in the code which is  the url.py
 That is a summary of how the end point is being set up.
 
@@ -116,26 +99,12 @@ That is a summary of how the end point is being set up.
   <summary> PATCH/event-detail/{id} </summary>
 Zuri Calender Plugin
 
-https://calender.zuri.chat/api/v1/event-detail/{id}
+https://calender.zuri.chat/api/v1/update-reminder/{id}
  </details>
 
 ## RESPONSES;
 ### **200** Event UPDATED Successfully <br>
-```sh
-{
-  "status": 200,
-  "message": "string",
-  "data": {...}
-}
-```
-### **404** The event is not found on the database <br>
-```sh
-{
-  "status": 404,
-  "message": "string",
-  "data": null
-} (edited) 
-```
+
 
 ### Response Sample
 **Content type** <br>
@@ -143,10 +112,12 @@ application/json
 
 ````
 {
-"code": 200,
-"message": "string",
-"data": {...}
-}
+"_id": "string",
+"title": string,
+"date": "2019-08-24",
+"time": "string",
+"repeat": "DO_NOT",
+"all_day": true
 ````
 
 # UPDATE EVENTS
@@ -171,10 +142,10 @@ Request Body schema: application/json
 
 ## Endpoint
 <details>
-  <summary> GET/delete_reminder/{reminder_id} </summary>
+  <summary> PATCH/update_reminder/{reminder_id} </summary>
 Zuri Calender Plugin
 
-https://calender.zuri.chat/api/v1/delete_reminder/{reminder_id}
+https://calender.zuri.chat/api/v1/update_event/{event_id}
  </details>
 
 
